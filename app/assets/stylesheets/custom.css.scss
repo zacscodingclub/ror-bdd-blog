@@ -1,2 +1,11 @@
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  padding-top: 70px;
+  background: #D8D8D8;
+  color: #791e9e;
+}
+.form-group {
+  margin-top:20px !important;
+}
