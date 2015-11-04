@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Creating Articles" do
   before do
+    @john = User.create(email: "john@example.com", password: "password")
+    login_as(@john)
     @article = Article.create(title: "Test Title", body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
