@@ -14,6 +14,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", user:
   end
 
   scenario "A user deletes an article" do
+    login_as(@john)
     visit "/"
     click_link @article.title
     click_link "Delete Article"
