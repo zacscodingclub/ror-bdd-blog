@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  # Calls Devise user authentication before showing 
+  # any page except index and show
+  before_action :authenticate_user!, except: [:index, :show]
   before_filter :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
