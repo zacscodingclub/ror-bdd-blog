@@ -24,6 +24,6 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", user:
 
     expect(page).to have_content("Your comment was added.")
     expect(page).to have_content("An awesome article")
-    expect(current_page).to eq(article_path(@article.comments.last.id))
+    expect(page.current_path).to eq(article_path(@article.comments.last.id))
   end
 end
