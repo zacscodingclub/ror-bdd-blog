@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   # Calls Devise user authentication before showing 
   # any page except index and show
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update]
   before_filter :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -37,7 +38,7 @@ class ArticlesController < ApplicationController
     else
       flash.now[:danger] = "Article has not been updated"
       render :edit
-    end
+    end  
   end
 
   def destroy
@@ -53,5 +54,12 @@ class ArticlesController < ApplicationController
 
     def set_article
       @article = Article.find(params[:id])     
+    end
+
+    def require_same_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless @user == current_user
+      
+      flash[:danger] = "You can only edit your own articles."
     end
 end
